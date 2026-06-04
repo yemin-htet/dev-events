@@ -1,0 +1,42 @@
+export const EVENTS = [
+  {
+    slug: "techfest-2026",
+    title: "TechFest 2026",
+    image: "/images/event1.png",
+    location: "Singapore Expo, Singapore",
+    date: "2026-07-15",
+    time: "09:00",
+  },
+  {
+    slug: "design-summit",
+    title: "Design Summit",
+    image: "/images/event2.png",
+    location: "Marina Bay Sands, Singapore",
+    date: "2026-08-02",
+    time: "10:00",
+  },
+  {
+    slug: "startup-pitch-night",
+    title: "Startup Pitch Night",
+    image: "/images/event3.png",
+    location: "One Utama, Kuala Lumpur",
+    date: "2026-08-20",
+    time: "18:30",
+  },
+  {
+    slug: "ai-conference",
+    title: "AI & Machine Learning Conference",
+    image: "/images/event4.png",
+    location: "Suntec City, Singapore",
+    date: "2026-09-10",
+    time: "08:30",
+  },
+  {
+    slug: "web3-hackathon",
+    title: "Web3 Hackathon",
+    image: "/images/event5.png",
+    location: "JW Marriott, Bangkok",
+    date: "2026-09-28",
+    time: "09:00",
+  },
+];
