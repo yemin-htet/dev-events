@@ -42,6 +42,7 @@ bookingSchema.pre('save', async function () {
   }
 });
 
+bookingSchema.index({ email: 1, eventId: 1 }, { unique: true, name: 'email_event_unique' }); // prevent duplicate bookings for the same email and event
 bookingSchema.index({ eventId: 1});// for efficient lookups of bookings by event
 bookingSchema.index({ eventId: 1, createdAt: -1 }); // for efficient pagination of bookings by event and recency
 bookingSchema.index({ email: 1 }); // for efficient lookups of bookings by email (e.g. for user dashboards)
