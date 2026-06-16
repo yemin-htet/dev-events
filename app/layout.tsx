@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LightRays from "@/components/LightRays";
 import Navbar from "@/components/Navbar";
+import NavbarSkeleton from "@/components/NavbarSkeleton";
+import { Toaster } from "sonner";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +33,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-dark-100">
-        <Navbar />
+        <Suspense fallback={<NavbarSkeleton />}>
+          <Navbar />
+        </Suspense>
         <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
           <LightRays
               raysOrigin="top-center"
@@ -51,6 +56,7 @@ export default function RootLayout({
         <main>
           {children}
         </main>
+        <Toaster/>
       </body>
     </html>
   );
