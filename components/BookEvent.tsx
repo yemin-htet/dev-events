@@ -1,14 +1,26 @@
 'use client';
+import { createBooking } from '@/lib/actions/booking.actions';
 import React, { useState } from 'react'
+import { toast } from 'sonner';
 
-export default function BookEvent() {
+export default function BookEvent({eventId}:{
+    eventId: string;
+}) {
     const [email,setEmail] = useState("")
     const [submitted,setSubmitted] = useState(false);
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setTimeout(()=>{
-            setSubmitted(true)
-        },1000)
+        toast.promise(createBooking({ eventId, email }), {
+            loading: "Booking your spot...",
+            success: (data) => {
+                if (!data.success) {
+                    throw new Error(data.error ?? "Booking failed. Please try again.");
+                }
+                setSubmitted(true);
+                return "You're in! Your spot has been booked.";
+            },
+            error: (err: Error) => err.message ?? "Something went wrong. Please try again.",
+        });
     }
   return (
     <div id='book-event'>
@@ -31,9 +43,7 @@ export default function BookEvent() {
                 <button type='submit' className='button-submit'>Submit</button>
             </form>
         )
-
         }
-
     </div>
   )
 }
